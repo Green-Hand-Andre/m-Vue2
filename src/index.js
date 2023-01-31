@@ -5,6 +5,6 @@ function Vue(options){
     this._init(options)
 
 }
-
+console.log(333)
 initMixin(Vue)
 export default Vue;
