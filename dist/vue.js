@@ -123,6 +123,31 @@
       var vm = this;
       vm.$options = options; //将用户的选项挂在实例上
       initState(vm);
+      if (options.el) {
+        vm.$mount(options.el);
+      }
+    };
+    Vue.prototype.$mount = function (el) {
+      var vm = this;
+      el = document.querySelector(el);
+      var ops = vm.$options;
+      if (!ops.render) {
+        var template;
+        if (!ops.template && el) {
+          // 没模板但是有el
+          template = el.outerHTML;
+        } else {
+          if (el) {
+            template = ops.template;
+          }
+        }
+        if (template) {
+          var render = compileToFunction(template);
+          ops.render = render;
+        }
+        console.log(template);
+      }
+      ops.render;
     };
   }
 
