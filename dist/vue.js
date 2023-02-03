@@ -116,6 +116,14 @@
     }
   }
 
+  function parseHtmlToAst(template) {
+    "[a-zA-Z_][\\-\\.0-9_a-zA-Z".concat(unicodeRegExp.source, "]*");
+  }
+
+  function compileToFunction(template) {
+    parseHtmlToAst();
+  }
+
   function initMixin(Vue) {
     // 给vue增加init方法
     debugger;
@@ -142,7 +150,7 @@
           }
         }
         if (template) {
-          var render = compileToFunction(template);
+          var render = compileToFunction();
           ops.render = render;
         }
         console.log(template);
